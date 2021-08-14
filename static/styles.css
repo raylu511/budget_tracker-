@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    background-image: linear-gradient(#E8D7F1, #A167A5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1,
+h2,
+h4,
+p {
+    color: #4A306D;
+    font-family: sans-serif
+}
+
+.sections {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    width: 44vw;
+    margin: 2vw;
+}
+
+.totals {
+    background-color: white;
+    padding: 20px;
+}
+
+.total_items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+}
+
+.form_input_a {
+    width: 70%;
+    height: 30px;
+    border: none;
+}
+
+.form_submit {
+    height: 33px;
+    width: 27%;
+    border: none;
+    border-radius: 10px;
+    background-color: #4A306D;
+    color: white;
+    cursor: pointer;
+}
+
+.expense_form {
+    width: 100%;
+}
+
+.form_input_b {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+    border: none;
+}
+
+.display_expense {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.expense_table {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+}
+
+th,
+td {
+    font-family: sans-serif;
+    text-align: start;
+    color: #4A306D;
+}
