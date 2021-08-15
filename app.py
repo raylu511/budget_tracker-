@@ -7,6 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:8333@localhost/bu
 db=SQLAlchemy(app)
 
 
+
 # Renders index html on startup 
 @app.route("/") 
 def index():
@@ -16,10 +17,10 @@ def index():
 class Budget(db.Model):
     __tablename__="budget"
     id=db.Column(db.Integer,primary_key=True)
-    budget_=db.Column(db.Integer)
+    budgetAmount_=db.Column(db.Integer)
 
-    def __init__(self,budget_):
-        self.budget_=budget_
+    def __init__(self,budgetAmount_):
+        self.budgetAmount_=budgetAmount_
      
 
 #Expense Class
@@ -28,24 +29,29 @@ class Expense(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     eName_=db.Column(db.String(120))
     eCost_=db.Column(db.Integer)
+    
 
     def __init__(self,eName_,eCost_):
         self.eName_=eName_
         self.eCost_=eCost_
+        
 
 
 #POST REQUEST
 @app.route("/submit",methods=["POST"])
 def submit():
-    if request.method=="POST":
+    
+    if request.method=="POST":     
         #Budget button
         if request.form["budget"] == "budget":
-            budget=request.form["budget_amount"] 
+            budgetAmount=request.form["budget_amount"] 
             print(request.form)
-            budget=Budget(budget)
+            budget=Budget(budgetAmount)
             db.session.add(budget)
             db.session.commit()
-        
+            return render_template("budget.html",budgetAmount=budgetAmount)
+
+
         #Expense button
         elif request.form["budget"]=="expense":    
             eName=request.form["expense_name"]
@@ -53,8 +59,7 @@ def submit():
             expense=Expense(eName,eCost)
             db.session.add(expense)
             db.session.commit()
-
-        return render_template("submit.html")
+            return render_template("budget.html",eName=eName,eCost=eCost)    
     
 
 if __name__ =='__main__':
